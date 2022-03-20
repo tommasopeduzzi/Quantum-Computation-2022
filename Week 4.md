@@ -32,8 +32,25 @@ Another example: We have a system with three qubits and want to apply a Hadamard
 
 **Multiple qubit gates**
 There are gates, such as the Controlled NOT gate, that cannot be represented as the tensor product of single qubit gates. 
-	When applying these gates, we can find that we get states, that we cannot express as tensor products of single qubit states. When a state cannot be described as such, we say that the state is entangled. This is a key factor in why quantum computing can be far more powerful that 
+When applying these gates, we can find that we get states, that we cannot express as tensor products of single qubit states. When a state cannot be described as such, we say that the state is entangled. This is a key factor in why quantum computing can be far more powerful than classical computers.
+
+Here is a list of multiple qubit gates 
 | **Gate**              | **Matrix**                                                                                    | **Comment**                                                                                                                                               |
 | --------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Controlled Not (CNOT) | $\begin{pmatrix}1 && 0 && 0 && 0 \\ 0 && 1 && 0 && 0 \\ 0 &&0&&0&&1\\0&&0&&1&&0\end{pmatrix}$ | The $2\times2$ matrix on the top right acts on the $\Ket {00}$ and $\Ket {01}$. The $2\times2$ matrix the lower right acts on the states $\Ket {10}$ and $\Ket {11}$ |
+| Controlled Not (CNOT/$C_x$) | $\begin{pmatrix}1 && 0 && 0 && 0 \\ 0 && 1 && 0 && 0 \\ 0 &&0&&0&&1\\0&&0&&1&&0\end{pmatrix}$ |  |
 |                       |                                                                                               |                                                                                                                                                           |
+
+**More on the CNOT**
+We have already come across an interpretation of the CNOT: It does an X operation on the target if the control is 1. This is also expressed in the matrix of CNOT: The $2\times2$ matrix on the top right ($\begin{pmatrix}1&&0\\0&&1\end{pmatrix} = I$) acts on the $\Ket {00}$ and $\Ket {01}$. The $2\times2$ matrix the lower right ($\begin{pmatrix}0&&1\\1&&0\end{pmatrix} = X$) acts on the states $\Ket {10}$ and $\Ket {11}$.
+This is only one of many interpretations of the CNOT. Another way of seeing it, is as doing a Z on the target if the control is in the state $\Ket-$. 
+Following this logic, the following can be written:
+$$C_{x}= \begin{pmatrix}1 && 0 && 0 && 0 \\ 0 && 1 && 0 && 0 \\ 0 &&0&&0&&1\\0&&0&&1&&0\end{pmatrix} = I\otimes |0\times0| + X \otimes|1\times1| = I\otimes|+\times+| + Z\otimes|-\times-|$$
+
+**Circuit Identities**
+These are some combinations of gates that are useful and often used in QC.
+Just like quantum states have two equivalent representations, namely Ket and Bra, quantum gates have a similar equivalent representation. So for a gate $U$ there exists a gate $U^\dagger$. The property of that gate is that has the same effect U has on a state in its Ket form, but on a state in the Bra form.
+There are gates where $U = U^\dagger$. These are called Hermitian gates. Most of the gates we have looked at so far have this property, like the X, Y, Z, Hadamard, CNOT.
+As an example we have the Hadamard: $H\Ket 0 =\Ket +$ and $\Bra 0 H = \Bra +$ etc.
+This can be used to transform different Pauli gates into eachother. For example $$HXH = |+\times-| + |-\times+| = Z$$because $X = |0\times1| + |1\times0|$ and the right Hadamard acts on all the Ket forms, while the left one acts in the Bra forms.
+Another example with the $C_{x}=|0\times0|\otimes I + |1\times1|\otimes X$: $$(I\otimes H)C_{x}(I\otimes H) = |0\times0|\otimes I + |1\times1|\otimes Z = C_{Z}$$
+Yet another example is can be seen with rotations. Here is an example with the $R_{Z}$. $$XR_{Z}(\theta)X = R_{Z}(-\theta)$$ More 
