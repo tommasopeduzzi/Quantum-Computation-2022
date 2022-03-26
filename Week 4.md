@@ -53,4 +53,4 @@ There are gates where $U = U^\dagger$. These are called Hermitian gates. Most of
 As an example we have the Hadamard: $H\Ket 0 =\Ket +$ and $\Bra 0 H = \Bra +$ etc.
 This can be used to transform different Pauli gates into eachother. For example $$HXH = |+\times-| + |-\times+| = Z$$because $X = |0\times1| + |1\times0|$ and the right Hadamard acts on all the Ket forms, while the left one acts in the Bra forms.
 Another example with the $C_{x}=|0\times0|\otimes I + |1\times1|\otimes X$: $$(I\otimes H)C_{x}(I\otimes H) = |0\times0|\otimes I + |1\times1|\otimes Z = C_{Z}$$
-Yet another example is can be seen with rotations. Here is an example with the $R_{Z}$. $$XR_{Z}(\theta)X = R_{Z}(-\theta)$$ More 
+Yet another example is can be seen with rotations. Here is an example with the $R_{Z}$. $$XR_{Z}(\theta)X = R_{Z}(-\theta)$$ More Circuit Identitities can be found in the *[section of the qiskit textbook](https://qiskit.org/textbook/ch-gates/more-circuit-identities.html).
