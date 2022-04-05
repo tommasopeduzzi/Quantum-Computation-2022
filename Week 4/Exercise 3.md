@@ -74,3 +74,4 @@ $\left|\begin{pmatrix}1&&0\end{pmatrix}\begin{pmatrix}a_0\\a_1\end{pmatrix}\righ
 
 For this to be true, the following must hold: $M\Ket\psi=M\begin{pmatrix}a_{0}\\a_{1}\end{pmatrix} = \begin{pmatrix}a_0\\-a_1\end{pmatrix}$ 
 An example where this is true is when $M = \begin{pmatrix}1&&0\\0&&-1\end{pmatrix} = \sigma_3$  
+

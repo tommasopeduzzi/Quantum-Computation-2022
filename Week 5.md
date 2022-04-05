@@ -29,8 +29,35 @@ More gennerally we can say that if we have the states $\Ket{\psi_0}$, $\Ket{\psi
 
 If $U \Ket{\psi_0}= \Ket{\phi_0}$ and $U \Ket{\psi_1} = \Ket{\psi_1}$, $U = |\psi_0\times\phi_0| + |\psi_1\times\phi_1|$ 
 
-Similarly, we can express unitaries as the sum of the product of the outer product of their eigentstates and the eigenvalue for that eigenstate. Example:
-$U \Ket{h_j} = e^{ih_j}\Ket{h_j}$, where $\Ket{h_j}$ is a basis state. $U = \sum\limits_j e^{ih_j}|h_j\times h_j|$  
+Similarly, we can express unitaries as the sum of the product of the outer product of their eigentstates and the eigenvalue for that eigenstate. An eigenstate is a state, where only the global phase is changed. Example:
+$U \Ket{h_j} = e^{ih_j}\Ket{h_j}$, where $\Ket{h_j}$ is a basis state. For $U^\dagger$, we can say that $U^\dagger\Ket {h_j} = e^{-ih_j}\Ket{h_j}$. This proves that $UU^\dagger = I$ 
+We can now write this unitary as $U = \sum\limits_j e^{ih_j}|h_j\times h_j|$. This is called the spectral form.
 
 ---
 **Hermitian matrices**
+These matrices are defined as any matrix that is equal to its hermitian form: $H = H^\dagger$. An example for such a matrix is the $\Ket0$ state. 
+When applying a Hermitian to a state, we don't always get back a normalized state. When applying it to one of its eigenstates, we get that state multiplied by some real number: $H\Ket{h_j} = h_j \Ket{h_j}$. The coefficient is real, because $h_j = h_j^*$ and that is only correct for real numbers.
+So we write Hermitian matrices as their spectral form: $H = \sum\limits_{j} h_j |h_j \times h_j|$ 
+For every Hermitian we can find a corresponding Unitary: $U = e^{iH}$ 
+
+---
+**Clifford Gates**
+Clifford gates have the property of turning Paulis into Paulis by conjugation. Conjugation means applying the gate on one side and the hermitian conjugate of that gate on the other side. An example of one of these Clifford gates is the Hadamard: $HXH^\dagger = Z$ 
+Most of the gates that we have looked at are Clifford's. Interestingly the Paulis are also Clifford gates.
+
+---
+
+**Multi qubit Paulis**
+Paulis also exist in multi qubit forms. For example, if we have a Clifford gate $U$ this still holds: $UX\otimes IU^\dagger = X\otimes X$. In this case $U = C_X$.
+
+---
+**Non-clifford Gates**
+Non-clifford gates can always be represented as a matrix exponential of a Hermitian.
+Examples for this are the Rotation gates:
+$R_X(\theta) = e^{iX \frac{\theta}{2}}$
+$R_Y(\theta) = e^{iY \frac{\theta}{2}}$
+$R_Z(\theta) = e^{iZ \frac{\theta}{2}} = H e^{i X\frac{\theta}{2}}H = e^{i (HXH^\dagger)\frac{\theta}{2}}$ 
+
+Let's suppose we have a system with 4 qubits and we want to rotate the last one by an angle theta around the x-Axis. For one qubit the operation looks like this: $e^{i \frac{\theta}{2} X }$. The gate for 4 qubits would look this: $R_X(\theta) \otimes I\otimes I\otimes I = e^{i \frac{\theta}{2} X \otimes I\otimes I\otimes I}$, because the Hermitian and Unitary have the same eigenbasis.     
+
+So for expressing a $R_x(\theta)$ and Ciiffords, we can express it as $e^{u \frac{\theta}{2}P_{n-1} \otimes P_{n-2} \otimes ... \otimes P_1 \otimes P_0}$ where $P_j \in \left\{\text{X, Y, Z, I} \right\}$ 
