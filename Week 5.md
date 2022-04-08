@@ -25,7 +25,7 @@ We call a matrix $U$ unitary, if $U^\dagger U =UU^\dagger = I$
 
 Suppose there is a state$\Ket\psi$ and $\langle\psi|\psi\rangle = 1$, so $\Ket\psi$ is normalized. If $U$ is a unitary and $U\Ket\psi = \Ket\phi$, $\langle\psi |\psi\rangle = \Bra\phi U^\dagger U\Ket\phi = \langle\phi |\phi\rangle = 1$. This shows that applying a unitary to a normalized state gives back a normalized state.
 
-More gennerally we can say that if we have the states $\Ket{\psi_0}$, $\Ket{\psi_1}$ and $\Ket{\phi_0} = U \Ket{\psi_0}$, $\Ket{\phi_1} = U\Ket{\psi_1}$, $\langle \psi_0|\psi_1\rangle =\langle \phi_0|\phi_1\rangle$.
+More generally we can say that if we have the states $\Ket{\psi_0}$, $\Ket{\psi_1}$ and $\Ket{\phi_0} = U \Ket{\psi_0}$, $\Ket{\phi_1} = U\Ket{\psi_1}$, $\langle \psi_0|\psi_1\rangle =\langle \phi_0|\phi_1\rangle$.
 
 If $U \Ket{\psi_0}= \Ket{\phi_0}$ and $U \Ket{\psi_1} = \Ket{\psi_1}$, $U = |\psi_0\times\phi_0| + |\psi_1\times\phi_1|$ 
 
