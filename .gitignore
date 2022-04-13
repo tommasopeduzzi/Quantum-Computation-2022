@@ -35,10 +35,6 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
-### Obsidian ###
-# config dir
-.obsidian/
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json

@@ -1,0 +1,34 @@
+{
+  "promptDelete": false,
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": true,
+    "margin": "0",
+    "downscalePercent": 61
+  },
+  "alwaysUpdateLinks": true,
+  "legacyEditor": false,
+  "livePreview": true,
+  "spellcheckDictionary": [
+    "qubit",
+    "qubits",
+    "CNOT",
+    "Hadamard",
+    "Ket",
+    " qubi",
+    "Paulis",
+    "Paulis",
+    "Paulis",
+    "Non-clifford Gates",
+    "Non-clifford",
+    "Eigenstate",
+    "Non-Cliffords",
+    "multi-qubit",
+    "n-qubit",
+    "it Pau",
+    "Toffoli",
+    "Cliffords",
+    "unitaries",
+    "superpositions"
+  ]
+}
