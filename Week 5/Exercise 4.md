@@ -1,4 +1,4 @@
-# Exercise 4
+o# Exercise 4
 ### Part 1
 a) State a is orthogonal if $\Braket{\overline0|\overline1} = 0$. So we need to find a matrix $\Ket{\overline1} = \begin{pmatrix}a_0 \\ a_1 \end{pmatrix}$, where $\begin{pmatrix}\cos\theta && \sin\theta\end{pmatrix}\begin{pmatrix}a_0 \\a_1\end{pmatrix} = a_0\cos\theta + a_1\sin\theta = 0$.  One solution is when $\Ket{\overline1} = \begin{pmatrix}\sin\theta \\ -\cos\theta\end{pmatrix}$. 
 b) $\Ket{\overline+} = \left(\frac{\Ket{\overline0} + \Ket{\overline1}}{\sqrt2}\right)= \frac{1}{\sqrt2}\begin{pmatrix}\cos\theta + \sin\theta\\sin\theta-\cos\theta\end{pmatrix}$ 
