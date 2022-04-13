@@ -3,6 +3,7 @@
 a) State a is orthogonal if $\Braket{\overline0|\overline1} = 0$. So we need to find a matrix $\Ket{\overline1} = \begin{pmatrix}a_0 \\ a_1 \end{pmatrix}$, where $\begin{pmatrix}\cos\theta && \sin\theta\end{pmatrix}\begin{pmatrix}a_0 \\a_1\end{pmatrix} = a_0\cos\theta + a_1\sin\theta = 0$.  One solution is when $\Ket{\overline1} = \begin{pmatrix}\sin\theta \\ -\cos\theta\end{pmatrix}$. 
 b) $\Ket{\overline+} = \left(\frac{\Ket{\overline0} + \Ket{\overline1}}{\sqrt2}\right)= \frac{1}{\sqrt2}\begin{pmatrix}\cos\theta + \sin\theta\\sin\theta-\cos\theta\end{pmatrix}$ 
 $\Ket{\overline-} = \left(\frac{\Ket{\overline0} - \Ket{\overline1}}{\sqrt2}\right)= \frac{1}{\sqrt2}\begin{pmatrix}\cos\theta - \sin\theta\\sin\theta+\cos\theta\end{pmatrix}$ 
+**Correction:**  Should've shown that they are indeed bases ($\Braket{\bar x | \bar -} = 0$) and that are mutually unbiased to $\Ket {\bar0}$ and $\Ket {\bar1}$.
 
 ### Part 2
 a) $XX = \begin{pmatrix}0 && 1\\1&&0\end{pmatrix}\begin{pmatrix}0 && 1\\1&&0\end{pmatrix} =\begin{pmatrix}0 \times0 + 1\times 1 && 0\times 1 + 1 \times 0\\0 \times1+1\times0 && 1\times1 + 0\times0\end{pmatrix} = \begin{pmatrix}1&&0\\0&&1\end{pmatrix} =I$
