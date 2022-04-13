@@ -22,16 +22,18 @@ We have a function $f(x) = s\cdot x \mod 2 = s\cdot x = \left(\sum\limits_j s_jx
 Classically we would have to do $n$ calls to the function, by passing in a bitstring with the bit of the current position set to $1$ and all the rest $n-1$ bits set to $0$. This allows us to find the bitstrig $s$ bit by bit, so the runtime of this classical algorithm is $O(n)$.
 For the quantum algorithm, we do the same as above, by applying $n$ Hadmards and then the phase oracle of the function: $U_f H^{\otimes n}\Ket{0}^{\otimes n} =\frac{1}{2^\frac{n}{2}} \sum\limits_x (-1)^{f(x)} \Ket{x}$. Because of how the function is defined, we can say that $U_f H^{\otimes n}\Ket{0}^{\otimes n} =\frac{1}{2^\frac{n}{2}} \sum\limits_x (-1)^{f(x)} \Ket{x} \equiv  H^{\otimes n}\Ket{s}$. When we then apply the anther n Hadamards, we get to the state $\Ket{s} = H^{\otimes n}U_f H^{\otimes n}\Ket{0}^{\otimes n} = H^{\otimes n}H^{\otimes n}\Ket{s}$.
 
-**Bell states**
-We define these states:
+**Bell basis**
+We define these orthogonal states:
 $\Ket{\phi^+} = \frac{1}{\sqrt2}(\Ket{00} + \Ket{11})$
 $\Ket{\phi^-} = \frac{1}{\sqrt2}(\Ket{00} - \Ket{11})$
 $\Ket{\psi^+} = \frac{1}{\sqrt2}(\Ket{01} + \Ket{10})$
 $\Ket{\psi^-} = \frac{1}{\sqrt2}(\Ket{01} - \Ket{10})$
+Because they are orthogonal, any state of two qubits can be expressed as a superposition of these states. 
 These states can be obtained from eachother, by applying local unitaries to another state. Local unitaries are unitaries that only act on one qubit:
 For example: $\Ket{\phi⁻} = Z \otimes I \Ket{\phi ^+} = I \otimes Z \Ket{\phi ^+}$ 
+We can measure these states by entangling them and performing a Z-measurement.
 
-**Quantum Communication**
+**Quantum Communication - Superdense Coding**
 Let's assume we have two bits of data we want transmit. We could just send two qubits that are prepared in a superposition encoding the information and have the other party measure it. This would work, but we can take advantage of entanglement, and apply this circuit to our two bits:
 ![[Pasted image 20220413181048.png]]
 This creates entanglement between the two bits:
@@ -41,3 +43,11 @@ This creates entanglement between the two bits:
 The interesting thing here is, that because they are entangled, the first party (often called Alice) can prepare a Bell state and send one qubit to the second party (often called Bob), before even knowing what she wants to send. When she knows the message, she can apply a local unitary that only affects her qubit, to change it the entangled state into the state encoding the message, without having to touch the qubit she has already sent off to Bob. Effectively she only has to send one qubit at the point she sends the message, with one entangled qubit already sent to Bob.
 
 **Teleportation**
+Teleportation is a protocol to transfer an unkown quantum state $\Ket{\sigma}$ in form of a qubit from one party (Alice) to another party (Bob), so that the second party has that state, while the first one doesn't. 
+To start of, there is a state $\Ket{\sigma} \otimes \Ket{\phi⁺}$, where the qubit representing state $\Ket{\sigma}$ and the first qubit of the entangled pair and are in the hands of Alice and the second qubit of the entangled pair is in Bob's hands.
+Alice can now apply a CNOT to her two qubits and a Hadamard to her qubit $\Ket{\sigma}$ and measure her two qubits, and in the case that she gets $\Ket{\phi⁺}$, Bob's qubit is now in state $\Ket{\sigma}$. In the other cases, Bob knows what gate to apply to that his qubit, to transform from that state to the original state (in our case $\Ket{\phi⁺}$). 
+Mathematically this can be explained as the following:
+THey start out with the following state, where $\Ket{\sigma} = \alpha \Ket{0} + \beta \Ket{1}$:$$\Ket{\sigma}\otimes \Ket{\phi⁺} = \frac{1}{\sqrt2}(\alpha \Ket{0} \otimes (\Ket{00} + \Ket{11}) + \beta(\Ket{00} + \Ket{11})) = \frac{1}{\sqrt2}(\alpha \Ket{000} + \alpha \Ket{011}  + \beta \Ket{100} + \beta \Ket{111})$$
+After applying the CNOT and then the Hadamard we get: $$(H \otimes I \otimes I)(C_X \otimes I)(\Ket{\sigma} \otimes \Ket{\phi⁺}) = \frac{1}{2}(\alpha(\Ket{000}+ \Ket{011}+\Ket{100}+\Ket{111}) + \beta(\Ket{010}+\Ket{001}-\Ket{110}-\Ket{101}))$$By separating out some terms we get:
+$$(H \otimes I \otimes I)(C_X \otimes I)(\Ket{\sigma} \otimes \Ket{\phi⁺}) = \frac{1}{2}(\Ket{00}(\alpha \Ket{0} + \beta \Ket{1} + \Ket{01}(\alpha \Ket{1} + \beta \Ket{0})+ \Ket{10}(\alpha \Ket{0} - \beta \Ket{1}) + \Ket{11}((\alpha \Ket{1} - \beta \Ket{0})))$$
+We can now see, that depending on what the first two qubits get measured out as, we get a state that can then be made into our original $\Ket{\sigma}$ state using only one pauli, which get decided by that measurement.
