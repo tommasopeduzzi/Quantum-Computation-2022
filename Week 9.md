@@ -23,3 +23,47 @@ By then applying $U_s$, that negates everything that is not the $\Ket{s}$ state 
 
 The new angle we get (after one repetition that's $\theta_1$), we get $\theta_1 = 3\theta_1$. More generally we can say, that after t repetitions $(U_sU_f)^t$ we get an angle of $\theta_t = (2t + 1)\theta_0$. To achieve our end goal, which is to have the state $\Ket{w}$ we have to do $t$ repetitions, which is in the order $O(\sqrt N)$. 
 Thus we have a polynomial improvement.
+
+## Problems about running these kinds of algorithms on quantum computers
+There are three main factors that decide if/when we can run complex algorithms:
+The first one is number of qubits. In many of the algorithms we assume to have a certain number of qubits, which we need to run that algorithm. For example for Shor's algorithm for factoring a $64$ bit number, we need $64$ qubits. the problem with building a ton of qubits, is that they become very noisy. More about this later.
+The second one is connectivity. In a practical quantum computer, there's only a limited set of qubits that can be used to perform non-local gates (like the CNOT, Toffoli etc.) on. To compensate in practice the often lacking connectivity, you have to use a lot more gates, which leads to even more noise.
+The third (and arguably the biggest one) is noise. Noise is describing any factors that cause things in circuits we don't want. These can be external factors or interactions between different gates/measurements etc. 
+We need to find ways to minimize this noise, but that won't be enough as the systems become more complex. We also need to develop methods to combat the errors produced by the noise and minimize their effect on the end result. These methods are the focus of quantum error correction.
+
+## Simple ways to model noise
+### Density Matrix
+Normally we use statevectors to describe quantum states in quantum computers. But there are situations where we can't use normalized statevectors, like we're used to. For example, if we get given a state, $$\Ket{\psi} = q_0 \Ket{\psi_0} +  q_1 \Ket{\psi_1}$$ the probability of getting a $0$ $P_0$ is: $$\begin{aligned}
+P_0 &= q_0P_0^\Ket{\psi_0} q_1P_0^\Ket{\psi_1}\\
+&=q_0 \langle0|\psi_0\times\psi_0|0\rangle +q_1 \langle0|\psi_1\times\psi_1|0\rangle\\&=\Bra 0 (q_0 |\psi_0\times\psi_0| +q_1 |\psi_1\times\psi_1|)\Ket{0} \end{aligned}$$ This object between the $0$ states is called the density matrix: $$\rho = q_0 |\psi_0\times\psi_0| +q_1 |\psi_1\times\psi_1|$$
+An example is: $$\begin{aligned}\rho &= \frac{1}{2} I\\ &= \frac{1}{2}|0\times0| + \frac{1}{2}|1\times1|\\ &= \frac{1}{2}|+\times+| + \frac{1}{2}|-\times-|\end{aligned}$$
+A property of these density matrix is that it's Hermitian, because the outer products of states with themselves are also hermitian and the probabilities are real and non-negative. Also, because each density matrix can be written like $\rho = \sum\limits_j q_j |\psi_j \times \psi_j|$ in its spectral form with its eigenstates $\psi_j$ and the eigenstates are orthogonal ($\langle \psi_j | \psi_k\rangle = 0$), the trace of a density matrix is $1 = tr(\rho) \sum\limits_j q_j$. Anything that satisfies these conditions is a valid density matrix and therefore a valid representation of a quantum state.
+
+## Density matrices in Noise
+When applying a unitary $U$ to a state represented by a density matrix $\rho = | \psi\times\psi|$, we write $$U\rho U^\dagger = U\Ket{\psi}\Bra{\psi}U^\dagger$$
+If we have a unitary that applies an $X$ with teh probability $e_x$, a $Y$ with a probability of $e_y$ and a $Z$ with a probability of $e_z$, we write U applied to a density matrix $\rho$ as $$\rho \rightarrow e_x X \rho X + e_yY\rho Y + e_zZ\rho Z + (I - e_x - e_y - e_z)\rho$$
+This kind of probabilistic unitary is what is called a superoperator. We can model the environment and the noise that comes from that as a big superoperator, which helps us understand how mitigate and correct for it.
+
+
+## Errors in circuits
+We can think of errors as occuring with some probability at each step (or gate) in a circuit. We can think of these errors as some $X$, $Y$ or $Z$ error, to simplify things. As the circuits get bigger, the amount of errors introduced grows dramatically. 
+
+
+## Measurement Error Mitigation
+There's also the chance that erros occur while measuring, which would give us incorrect results when measuring the result of a qubit. These errors can be quite easily mitigated.
+
+In this strategy we define a pauli error (like described above) and apply that with a certain probability when measuring. In the textbook we apply an $X$ 1% of the time when measuring.
+In the simulation it is equally likely for a $0$ to change to a $1$ and a $1$ into a $0$, but in reality it is far less likely for a $0$ to become a $1$.
+
+We could go through the results and manually find out what makes sense, but that is tedious (and I am lazy). This can be done more sistematically:
+We can write a result, such as the result for $10000$ shots of a circuit that should give us $00$, like this $00$: $98.08\%$, $01$: $0.95\%$, $10$: $0.96\%$ and $11$: $0.001\%$, or we can write them in a normalized column vecor: $\begin{pmatrix}0.9808 \\ 0.0095 \\ 0.0096 \\ 0.0001\end{pmatrix}$.
+We can then do this for all possible results and write a matrix for each possible result and combining the column vectors into a big matrix: $$M = 
+\begin{pmatrix}
+    0.9808&0.0107&0.0095&0.0001 \\
+    0.0095&0.9788&0.0001&0.0107 \\
+    0.0096&0.0002&0.9814&0.0087 \\
+    0.0001&0.0103&0.0090&0.9805
+\end{pmatrix}$$
+Because $M C_{ideal} = C_{noisy}$, where $C_{noisy}$ and $C_{ideal}$ are the ideal and noisy results respectively. This can then be formed to $C_{ideal} = M^{-1}C_{noisy}$. So under the condition that we can take the inverse, we can transform noisy results into ideal ones by analysing the results of the noisy circuits.
+
+Doing this for a larger amount of qubits is really infeasable, you might as well simulate the quantum computer. There are some generalizations, that can be done to make this more efficient.
