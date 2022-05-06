@@ -7,8 +7,12 @@
         "id": "ab2e004319a1db6a",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Week 10.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Week 10.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,15 +89,15 @@
   },
   "active": "ab2e004319a1db6a",
   "lastOpenFiles": [
-    "Untitled 1.md",
-    "Untitled.md",
-    "Hints exercise 8.md",
-    "Week 10/Extra Lecture.md",
-    "Week 9/Exercise 8.md",
-    "Week 6/Exercise 5.md",
-    "Week 9/Exercise8.pdf",
-    "Week 7/Extra Lecture - Quantum Cryptography.md",
+    "Week 10.md",
+    "Week 10/Shors code.png",
+    "Week 10/Graph.png",
     "Week 9.md",
-    "Week 9/Extra Lecture - Noise.md"
+    "Week 10/Advanced Decoding.png",
+    "Week 10/Simple Decoding.png",
+    "Week 10/Repetition code circuit.png",
+    "Week 6/Exercise 5.md",
+    "Untitled 1.md",
+    "Hints exercise 8.md"
   ]
 }
