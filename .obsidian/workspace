@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Week 10.md",
+            "file": "Week 11.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Week 10.md",
+                "file": "Week 11.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "ab2e004319a1db6a",
   "lastOpenFiles": [
+    "Week 11.md",
+    "Week 11/Images/Surface code diagrams.png",
+    "Week 11/Images/generating 1 states.png",
+    "Week 11/Images/family of 0 states.png",
+    "Week 11/Images/Surface code 2.png",
+    "Week 11/Images/Surface code 1.png",
     "Week 10.md",
     "Week 10/Shors code.png",
     "Week 10/Graph.png",
-    "Week 9.md",
-    "Week 10/Advanced Decoding.png",
-    "Week 10/Simple Decoding.png",
-    "Week 10/Repetition code circuit.png",
-    "Week 6/Exercise 5.md",
-    "Untitled 1.md",
-    "Hints exercise 8.md"
+    "Week 9.md"
   ]
 }
