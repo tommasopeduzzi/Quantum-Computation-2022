@@ -7,9 +7,11 @@
         "id": "5304e1367cbe1356",
         "type": "leaf",
         "state": {
-          "type": "image",
+          "type": "markdown",
           "state": {
-            "file": "Week 11/Images/minimum weight perfect matching surface code.png"
+            "file": "Week 5/Exercise 4.md",
+            "mode": "source",
+            "source": false
           }
         }
       }
@@ -67,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Week 11/Images/minimum weight perfect matching surface code.png",
+                "file": "Week 5/Exercise 4.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,15 +89,15 @@
   },
   "active": "5304e1367cbe1356",
   "lastOpenFiles": [
+    "Week 5/Exercise 4.md",
+    "Week 6/Exercise 5.md",
+    "Week 3/Exercise2.pdf",
+    "Week 4/Exercise 3.md",
     "Week 11/Images/minimum weight perfect matching surface code.png",
     "Week 11/Images/0 state superposition surface code.png",
     "Week 11/Images/general errors in surface codes.png",
     "Week 11/Images/+ and - family of surface code encodings.png",
     "Week 11/Images/Errors in 1 and 0 surface code.png",
-    "Pasted image 20220512201733.png",
-    "Week 11.md",
-    "Untitled.md",
-    "Week 11/Images/Surface code diagrams.png",
-    "Week 11/Images/generating 1 states.png"
+    "Pasted image 20220512201733.png"
   ]
 }
